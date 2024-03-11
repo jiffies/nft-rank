@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "NodeMonke Rank",
+  "version": "1.0",
+  "permissions": ["storage", "activeTab", "scripting","tabs"],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://magiceden.io/ordinals/marketplace/nodemonkes"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["nodemonkes.txt"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "host_permissions": [
+    "https://magiceden.io/ordinals/marketplace/nodemonkes"
+  ]
+}
